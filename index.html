@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Hiragino Sans'}
+    span.s1 {font: 13.0px 'Hiragino Sans'}
+    span.s2 {font: 13.0px 'Helvetica Neue'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ja"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;<span class="s1">スポーツ探究学習</span> <span class="s1">診断テスト</span>&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f4f7f6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1, h2, h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #0056b3; /* <span class="s1">クラーク記念国際高等学校のイメージカラーに近い青系</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5em;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.introduction, .instructions {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e9f5ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 5px solid #0056b3;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.question-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fdfdfd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.question {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.question p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block; /* <span class="s1">横並びにする</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s, color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options input[type="radio"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none; /* <span class="s1">ラジオボタン本体を非表示</span> */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options input[type="radio"]:checked + span {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #007bff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #007bff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options label:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e9ecef;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.submit-button, .pdf-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #28a745; /* <span class="s1">やや明るい緑</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.submit-button:hover, .pdf-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #218838;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.pdf-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #dc3545; /* <span class="s1">赤系</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.pdf-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #c82333;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.results {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e9f5ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.results h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #0056b3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.results p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.results strong {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #0056b3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#radarChartContainer {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* <span class="s1">レスポンシブ対応</span> */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 600px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.options label {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>margin-right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container" id="assessmentPage"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;<span class="s1">スポーツ探究学習</span> <span class="s1">診断テスト</span>&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="introduction"&gt;</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">            </span>&lt;p&gt;</span>この診断テストは、あなたの探究学習における能力を測定するためのものです。スポーツ探究学習の受講前と受講後で、ご自身の変化を確認しましょう。<span class="s2">&lt;/p&gt;</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;<span class="s1">対象：</span>&lt;/strong&gt;<span class="s1">クラーク記念国際高等学校</span> 1<span class="s1">〜</span>3<span class="s1">年生（スポーツ探究学習選択者）</span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="instructions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;<span class="s1">回答方法</span>&lt;/h3&gt;</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">            </span>&lt;p&gt;</span>各質問に対して、最も当てはまるものを以下の<span class="s2">5</span>段階から選んでください。<span class="s2">&lt;/p&gt;</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;5<span class="s1">点：とても当てはまる</span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;4<span class="s1">点：当てはまる</span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;3<span class="s1">点：どちらでもない</span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;2<span class="s1">点：当てはまらない</span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;1<span class="s1">点：全く当てはまらない</span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;form id="assessmentForm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="button" class="submit-button" onclick="calculateResults()"&gt;<span class="s1">診断結果を見る</span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="results" id="resultsArea" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;<span class="s1">診断結果</span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="scores"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="overallScore"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;<span class="s1">能力バランス</span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="radarChartContainer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;canvas id="radarChart"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button type="button" class="pdf-button" onclick="downloadPDF()"&gt;<span class="s1">結果を</span>PDF<span class="s1">で保存する</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questions = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ⅰ. <span class="s1">課題設定能力</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">自分の周りの問題や課題に気づくことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">スポーツの場面で改善すべき点を見つけることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">チームや集団の中での課題を見出すことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">日常生活の中で、「なぜ？」と疑問を持つことが多い</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">現状に満足せず、より良い方法を考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">自分自身の課題や弱点を客観的に把握している</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">漠然とした問題を具体的な課題として整理できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">スポーツの技術や戦術における課題を見つけることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">社会やスポーツにおける新たな課題や問題点に気づくことがある</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題設定能力</span>", text: "<span class="s1">問題の本質を見極めることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ⅱ. <span class="s1">課題解決能力</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">課題に対して複数の解決策を考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">困難な状況でも諦めずに取り組むことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">失敗から学び、次の解決策を考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">スポーツの場面で起きた問題に対処することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">限られた時間や資源の中で最適な解決策を見つけられる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">自分の強みを活かして課題を解決することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">課題解決のために必要な情報を集めることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">問題解決のためのステップを順序立てて考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">予期せぬ障害が出てきても対応策を考えられる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">課題解決能力</span>", text: "<span class="s1">解決策を実行し、その効果を評価することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ⅲ. <span class="s1">協働能力</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">チームでの活動において自分の役割を理解している</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">他者の意見や考えを尊重することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">自分の考えを相手に分かりやすく伝えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">グループでの話し合いに積極的に参加できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">他者と協力して目標達成に向けて取り組める</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">意見が対立した時に折り合いをつけることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">チームメイトの長所や強みを理解し、活かすことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">異なる考えや多様性を受け入れることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">共同作業において自分から動き、周りを巻き込むことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">協働能力</span>", text: "<span class="s1">チーム全体の成果を重視して行動できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ⅳ. <span class="s1">批判的思考力</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">情報の信頼性や妥当性を確認する習慣がある</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">物事を多角的な視点から考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">思い込みや先入観にとらわれず考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">根拠に基づいて自分の意見を形成することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">他者の主張や意見を論理的に分析できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">「なぜそうなるのか」と原因を深く考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">スポーツにおける課題を分析的に考えることができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">自分の考えや行動を振り返り、改善点を見つけられる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">感情に流されず、客観的に物事を判断できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">批判的思考力</span>", text: "<span class="s1">常識や固定観念に疑問を持つことがある</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ⅴ. <span class="s1">主体性と選択力</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">自分で決めたことに責任を持って取り組める</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">様々な選択肢の中から最適なものを選ぶことができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">自分の将来について具体的な目標を持っている</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">失敗を恐れず、新しいことに挑戦できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">自分から積極的に行動することができる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">判断に迷った時、重要な基準を設けて選択できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">スポーツや日常における自分の選択に自信を持っている</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">周囲の状況に合わせて柔軟に対応できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">自分の特性や強みを活かす場面を選択できる</span>" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ category: "<span class="s1">主体性と選択力</span>", text: "<span class="s1">自分自身で考え、決断することができる</span>" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const options = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ label: "<span class="s1">全く当てはまらない</span>", value: 1 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ label: "<span class="s1">当てはまらない</span>", value: 2 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ label: "<span class="s1">どちらでもない</span>", value: 3 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ label: "<span class="s1">当てはまる</span>", value: 4 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ label: "<span class="s1">とても当てはまる</span>", value: 5 }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const form = document.getElementById('assessmentForm');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentCategory = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let groupDiv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>questions.forEach((q, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (q.category !== currentCategory) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentCategory = q.category;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>groupDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>groupDiv.className = 'question-group';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const groupTitle = document.createElement('h3');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>groupTitle.textContent = `Ⅰ. ${currentCategory}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// <span class="s1">カテゴリー番号を動的に割り当てる（例：</span>Ⅰ<span class="s1">、</span>Ⅱ<span class="s1">、</span>Ⅲ...<span class="s1">）</span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const categoryIndex = Array.from(new Set(questions.map(item =&gt; item.category))).indexOf(currentCategory);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const romanNumerals = ["Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ"];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>groupTitle.textContent = `${romanNumerals[categoryIndex]}. ${currentCategory}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>groupDiv.appendChild(groupTitle);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>form.appendChild(groupDiv);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const questionDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionDiv.className = 'question';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const questionText = document.createElement('p');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionText.textContent = `${(index % 10) + 1}. ${q.text}`; // <span class="s1">グループ内の質問番号</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionDiv.appendChild(questionText);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const optionsDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>optionsDiv.className = 'options';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>options.forEach(opt =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const label = document.createElement('label');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const radio = document.createElement('input');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.type = 'radio';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.name = `q${index}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.value = opt.value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.required = true; // <span class="s1">全ての質問に回答を必須にする</span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const span = document.createElement('span');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>span.textContent = opt.label;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>label.appendChild(radio);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>label.appendChild(span);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsDiv.appendChild(label);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionDiv.appendChild(optionsDiv);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>groupDiv.appendChild(questionDiv);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let myRadarChart = null; // <span class="s1">チャートのインスタンスを保持</span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function calculateResults() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const formData = new FormData(form);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scores = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">課題設定能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">課題解決能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">協働能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">批判的思考力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">主体性と選択力</span>": 0</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const categoryCounts = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">課題設定能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">課題解決能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">協働能力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">批判的思考力</span>": 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>"<span class="s1">主体性と選択力</span>": 0</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let allAnswered = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; questions.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!formData.has(`q${i}`)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allAnswered = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!allAnswered) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert("<span class="s1">すべての質問に回答してください。</span>");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>questions.forEach((q, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const value = parseInt(formData.get(`q${index}`));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!isNaN(value)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scores[q.category] += value;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>categoryCounts[q.category]++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultsArea = document.getElementById('resultsArea');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scoresDiv = document.getElementById('scores');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const overallScoreDiv = document.getElementById('overallScore');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scoresDiv.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overallScoreDiv.innerHTML = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let totalScore = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const categoryScoresForChart = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const category in scores) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const score = scores[category];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>totalScore += score;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>categoryScoresForChart.push(score);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const evaluation = getCategoryEvaluation(score);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scoresDiv.innerHTML += `&lt;p&gt;&lt;strong&gt;${category}:&lt;/strong&gt; ${score}<span class="s1">点</span> (${evaluation})&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const overallEvaluation = getOverallEvaluation(totalScore);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overallScoreDiv.innerHTML = `&lt;p&gt;&lt;strong&gt;<span class="s1">総合得点</span>:&lt;/strong&gt; ${totalScore}<span class="s1">点</span> / 250<span class="s1">点</span> (${overallEvaluation})&lt;/p&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultsArea.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultsArea.scrollIntoView({ behavior: 'smooth' });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// <span class="s1">レーダーチャートの描画</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ctx = document.getElementById('radarChart').getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (myRadarChart) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>myRadarChart.destroy(); // <span class="s1">既存のチャートがあれば破棄</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>myRadarChart = new Chart(ctx, {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'radar',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>labels: Object.keys(scores),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>datasets: [{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>label: '<span class="s1">今回の診断結果</span>',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>data: categoryScoresForChart,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>fill: true,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>backgroundColor: 'rgba(0, 123, 255, 0.2)', // <span class="s1">半透明の青</span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>borderColor: 'rgb(0, 123, 255)', <span class="Apple-converted-space">        </span>// <span class="s1">青</span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>pointBackgroundColor: 'rgb(0, 123, 255)',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>pointBorderColor: '#fff',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>pointHoverBackgroundColor: '#fff',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>pointHoverBorderColor: 'rgb(0, 123, 255)'</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>elements: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>line: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>borderWidth: 3</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scales: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>r: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>angleLines: {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>display: true</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>suggestedMin: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>suggestedMax: 50, // <span class="s1">各カテゴリの満点</span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>ticks: {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>stepSize: 10</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>maintainAspectRatio: false // <span class="s1">コンテナに合わせてサイズ調整</span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getCategoryEvaluation(score) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 40) return "<span class="s1">非常に高いレベル</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 30) return "<span class="s1">良好なレベル</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 20) return "<span class="s1">基本的なレベル</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return "<span class="s1">発展途上のレベル</span>";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getOverallEvaluation(score) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 200) return "<span class="s1">非常に高い探究能力</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 150) return "<span class="s1">良好な探究能力</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= 100) return "<span class="s1">基本的な探究能力</span>";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return "<span class="s1">これから伸ばしていく探究能力</span>";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function downloadPDF() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const { jsPDF } = window.jspdf;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pdf = new jsPDF('p', 'mm', 'a4');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const assessmentPage = document.getElementById('assessmentPage');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// <span class="s1">診断結果部分のみを</span>PDF<span class="s1">化する場合</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultsArea = document.getElementById('resultsArea');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!resultsArea || resultsArea.style.display === 'none') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert("<span class="s1">先に診断結果を表示してください。</span>");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// <span class="s1">タイトルを追加</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>pdf.setFontSize(18);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>pdf.text("<span class="s1">スポーツ探究学習</span> <span class="s1">診断テスト結果</span>", 105, 15, null, null, 'center');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// html2canvas <span class="s1">を使って結果エリアを画像に変換</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const canvas = await html2canvas(resultsArea, { scale: 2, useCORS: true }); // <span class="s1">スケールを上げて解像度を改善</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const imgData = canvas.toDataURL('image/png');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const imgProps= pdf.getImageProperties(imgData);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pdfWidth = pdf.internal.pageSize.getWidth();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let position = 25; // <span class="s1">タイトルの下に配置</span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>pdf.addImage(imgData, 'PNG', 10, position, pdfWidth - 20, pdfHeight -10); //<span class="s1">マージンを考慮</span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// <span class="s1">注意書き</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const noteY = position + pdfHeight -5; // <span class="s1">画像の下に配置</span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (noteY &lt; pdf.internal.pageSize.getHeight() - 20) { // <span class="s1">ページ下部に余裕があれば</span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>pdf.setFontSize(10);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pdf.setTextColor(100);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pdf.text("<span class="s1">この</span>PDF<span class="s1">は、表示されている診断結果をキャプチャしたものです。</span>", 10, noteY + 10 );</p>
+<p class="p1"><span class="Apple-converted-space">                </span>pdf.text("<span class="s1">授業前後の比較のため、大切に保管してください。</span>", 10, noteY + 15);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>pdf.save('sports_assessment_results.pdf');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
